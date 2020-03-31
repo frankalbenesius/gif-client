@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import download from "downloadjs";
 
 function App() {
   const videoEl = useRef<HTMLVideoElement>(null);
@@ -36,14 +37,23 @@ function App() {
   }
   useEffect(() => {
     if (blob) {
-      var url = URL.createObjectURL(blob);
-      let a = document.createElement("a");
-      document.body.appendChild(a);
-      // a.style = "display: none";
-      a.href = url;
-      a.download = "test.webm";
-      a.click();
-      window.URL.revokeObjectURL(url);
+      // var url = URL.createObjectURL(blob);
+      // let a = document.createElement("a");
+      // document.body.appendChild(a);
+      // // a.style = "display: none";
+      // a.href = url;
+      // a.download = "test.webm";
+      // a.click();
+      // window.URL.revokeObjectURL(url);
+
+      fetch("https://franks-gif-api.herokuapp.com/gif", {
+        method: "POST",
+        body: blob
+      }).then(res => {
+        res.blob().then(blob => {
+          download(blob, "reaction.gif", "image/gif");
+        });
+      });
     }
   }, [blob]);
 
@@ -51,7 +61,9 @@ function App() {
     <div>
       <video autoPlay ref={videoEl}></video>
       <div>
-        <button onClick={handleRecordGif}>record gif</button>
+        <button onClick={handleRecordGif}>
+          record and download 3 second gif
+        </button>
       </div>
     </div>
   );
