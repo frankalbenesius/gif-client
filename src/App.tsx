@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import download from "downloadjs";
+import { format } from "date-fns";
 
 function App() {
   const videoEl = useRef<HTMLVideoElement>(null);
@@ -37,21 +38,13 @@ function App() {
   }
   useEffect(() => {
     if (blob) {
-      // var url = URL.createObjectURL(blob);
-      // let a = document.createElement("a");
-      // document.body.appendChild(a);
-      // // a.style = "display: none";
-      // a.href = url;
-      // a.download = "test.webm";
-      // a.click();
-      // window.URL.revokeObjectURL(url);
-
       fetch("https://franks-gif-api.herokuapp.com/gif", {
         method: "POST",
         body: blob
       }).then(res => {
         res.blob().then(blob => {
-          download(blob, "reaction.gif", "image/gif");
+          const timestamp = format(new Date(), "t");
+          download(blob, `gif_${timestamp}.gif`, "image/gif");
         });
       });
     }
