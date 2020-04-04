@@ -12,7 +12,7 @@ export function useMediaRecorder(
       .getUserMedia({
         audio: false,
         video: {
-          aspectRatio: { exact: 1 },
+          aspectRatio: { exact: 4 / 3 },
           // width: { exact: 640 },
           // height: { exact: 480 },
         },
