@@ -12,10 +12,9 @@ export function useMediaRecorder(
       .getUserMedia({
         audio: false,
         video: {
-          aspectRatio: { exact: 4 / 3 },
-          resizeMode: "crop-and-scale",
-          width: { exact: 640 },
-          height: { exact: 480 },
+          aspectRatio: { exact: 1 },
+          // width: { exact: 640 },
+          // height: { exact: 480 },
         },
       })
       .then((stream) => {
