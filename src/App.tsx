@@ -20,11 +20,11 @@ function App() {
   }, [blob]);
 
   return (
-    <div style={{ maxWidth: "640px", margin: "0 auto", padding: "1rem" }}>
+    <div style={{ maxWidth: "480px", margin: "0 auto", padding: "1rem" }}>
       <div
         style={{
           width: "100%",
-          maxWidth: "640px",
+          maxWidth: "480px",
           backgroundColor: "black",
           position: "relative",
           marginBottom: "0.25rem",
@@ -33,7 +33,7 @@ function App() {
         <div
           style={{
             width: "100%",
-            paddingTop: "75%",
+            paddingTop: "75%", // preserves 4:3 ratio
           }}
         ></div>
         <video
