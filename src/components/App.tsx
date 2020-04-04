@@ -32,6 +32,7 @@ function App() {
   }, [webmBlob, setGifBlob]);
 
   const [phase, setPhase] = useState<Phase>("READY");
+
   async function beginRecordingSequence(e: React.MouseEvent) {
     setPhase("COUNTDOWN");
     await wait(3000);
@@ -98,30 +99,24 @@ function App() {
       <h3>gif yourself</h3>
       <div
         style={{
-          width: "100%",
-          maxWidth: "480px",
-          backgroundColor: "black",
-          position: "relative",
           marginBottom: "0.25rem",
         }}
       >
-        <div
-          style={{
-            width: "100%",
-            paddingTop: "75%", // preserves 4:3 ratio
-          }}
-        ></div>
         <video
           ref={videoEl}
-          hidden={phase === "PROCESSING" || phase === "DONE"}
-          style={{ top: 0, left: 0, position: "absolute", width: "100%" }}
+          style={{
+            display: phase === "DONE" ? "none" : "block",
+            width: "100%",
+          }}
           autoPlay
         ></video>
         <img
           ref={imgRef}
           alt="the gif you recorded"
-          hidden={phase !== "DONE"}
-          style={{ top: 0, left: 0, position: "absolute", width: "100%" }}
+          style={{
+            display: phase === "DONE" ? "block" : "none",
+            width: "100%",
+          }}
         />
       </div>
       <div>

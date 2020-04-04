@@ -11,11 +11,7 @@ export function useMediaRecorder(
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
-        video: {
-          aspectRatio: { exact: 4 / 3 },
-          width: { min: 640, max: 640 },
-          height: { min: 480, max: 480 },
-        },
+        video: { aspectRatio: 4 / 3 },
       })
       .then((stream) => {
         if (videoRef.current) {
