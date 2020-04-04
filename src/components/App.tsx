@@ -140,7 +140,7 @@ function App() {
             }}
             onClick={downloadGif}
           >
-            DOWNLOAD GIF!
+            download GIF
           </button>
         )}
         <button

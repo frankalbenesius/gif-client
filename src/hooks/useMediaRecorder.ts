@@ -9,7 +9,10 @@ export function useMediaRecorder(
   useEffect(() => {
     const mediaRecorderOptions = { mimeType: "video/webm; codecs=vp8" };
     navigator.mediaDevices
-      .getUserMedia({ audio: false, video: { width: 640, height: 480 } })
+      .getUserMedia({
+        audio: false,
+        video: { width: { exact: 640 }, height: { exact: 480 } },
+      })
       .then((stream) => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
