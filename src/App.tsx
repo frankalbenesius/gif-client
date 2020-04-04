@@ -7,7 +7,7 @@ function App() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   useEffect(() => {
-    const mediaRecorderOptions = { mimeType: "video/webm; codecs=vp9" };
+    const mediaRecorderOptions = { mimeType: "video/webm; codecs=vp8" };
     navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
       if (videoEl.current) {
         videoEl.current.srcObject = stream;
