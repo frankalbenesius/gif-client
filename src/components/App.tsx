@@ -96,6 +96,13 @@ function App() {
   return (
     <div style={{ maxWidth: "480px", margin: "0 auto", padding: "1rem" }}>
       <h3>gif yourself</h3>
+      <div>
+        {Object.keys(navigator.mediaDevices.getSupportedConstraints()).map(
+          (x) => (
+            <div>{x}</div>
+          )
+        )}
+      </div>
       <div
         style={{
           width: "100%",
