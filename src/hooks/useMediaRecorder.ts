@@ -13,6 +13,7 @@ export function useMediaRecorder(
         audio: false,
         video: {
           aspectRatio: { exact: 4 / 3 },
+          resizeMode: "crop-and-scale",
           width: { exact: 640 },
           height: { exact: 480 },
         },
