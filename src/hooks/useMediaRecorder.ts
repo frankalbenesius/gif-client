@@ -13,8 +13,8 @@ export function useMediaRecorder(
         audio: false,
         video: {
           aspectRatio: { exact: 4 / 3 },
-          // width: { exact: 640 },
-          // height: { exact: 480 },
+          width: { min: 640, max: 640 },
+          height: { min: 480, max: 480 },
         },
       })
       .then((stream) => {
