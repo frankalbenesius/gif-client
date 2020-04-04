@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div style={{ maxWidth: "480px", margin: "0 auto", padding: "1rem" }}>
-      <h3>make a gif, pal</h3>
+      <h3>gif yourself</h3>
       <div
         style={{
           width: "100%",
