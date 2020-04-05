@@ -165,8 +165,8 @@ function App() {
               width: "100%",
               height: "100%",
               position: "absolute",
-              opacity: 0.2,
-              background: "black",
+              opacity: 0.3,
+              background: "white",
               transition:
                 phase === "COUNTDOWN" || phase === "RECORDING"
                   ? "left 6s linear"
