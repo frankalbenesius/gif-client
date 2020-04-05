@@ -150,9 +150,29 @@ function App() {
             padding: "0.5rem",
             fontSize: "1.5rem",
             textTransform: "uppercase",
+            position: "relative",
+            overflow: "hidden",
           }}
           onClick={buttonState.onClick}
         >
+          <div
+            style={{
+              top: 0,
+              left:
+                phase === "COUNTDOWN" || phase === "RECORDING"
+                  ? "100%"
+                  : "-100%",
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              opacity: 0.2,
+              background: "black",
+              transition:
+                phase === "COUNTDOWN" || phase === "RECORDING"
+                  ? "left 6s linear"
+                  : "none",
+            }}
+          />
           {buttonState.text}
         </button>
       </div>
