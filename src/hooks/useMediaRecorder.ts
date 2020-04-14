@@ -11,7 +11,7 @@ export function useMediaRecorder(
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
-        video: { aspectRatio: 4 / 3 },
+        video: true,
       })
       .then((stream) => {
         if (videoRef.current) {
