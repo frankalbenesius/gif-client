@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import download from "downloadjs";
 import { format } from "date-fns";
 import { useMediaRecorder } from "../hooks/useMediaRecorder";
+import { track } from "../lib/analytics";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -34,6 +35,7 @@ function App() {
   const [phase, setPhase] = useState<Phase>("READY");
 
   async function beginRecordingSequence(e: React.MouseEvent) {
+    track("start recording");
     setPhase("COUNTDOWN");
     await wait(3000);
     setPhase("RECORDING");
@@ -41,10 +43,12 @@ function App() {
   }
 
   function resetRecorder(e: React.MouseEvent) {
+    track("reset");
     setPhase("READY");
   }
 
   function downloadGif() {
+    track("download gif", { size: gifBlob?.size });
     if (gifBlob) {
       const timestamp = format(new Date(), "t");
       download(gifBlob, `gif_${timestamp}.gif`, "image/gif");
